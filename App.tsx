@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { View } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import MapView, { Marker } from "react-native-maps";
 
@@ -49,6 +49,12 @@ export default function App() {
     <View style={styles.container}>
       {location && (
         <MapView
+          showsUserLocation
+          showsMyLocationButton
+          showsCompass
+          showsScale
+          zoomControlEnabled={false}
+          toolbarEnabled
           ref={mapRef}
           style={styles.map}
           initialRegion={{
@@ -66,6 +72,10 @@ export default function App() {
           />
         </MapView>
       )}
+
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>T</Text>
+      </TouchableOpacity>
     </View>
   );
 }
